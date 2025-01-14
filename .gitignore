@@ -26,3 +26,4 @@ dist-ssr
 # Test JSONs
 channelList.json
 testFile.json
+results.json

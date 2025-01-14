@@ -4,16 +4,7 @@ import pandas
 import fast_calculations
 import json
 
-def loadChannelList(file):
-    try:
-        with dw.open(file) as dataFile:
-            channelList = [channel for channel in dataFile
-                        if not 'CAN' in dataFile[channel].channel_index]
-        return channelList
-
-    except ValueError:
-        pass
-
+# Load target dewesoft file and all data
 def loadFile(file):
     try:
         with dw.open(file) as dataFile:
@@ -25,6 +16,7 @@ def loadFile(file):
     except ValueError:
         pass
 
+# Open testFile.json and load into variables
 with open('testFile.json', 'r') as file:
     data = json.load(file)
     fileName = data["fileName"]
@@ -32,24 +24,24 @@ with open('testFile.json', 'r') as file:
     loadChannel = data["loadChannel"]
     revChannel = data["revChannel"]
 
-channelList = loadChannelList(fileName)
-
-# Convert channel list into JSON
-# File name is channelList.json
-with open("channelList.json", "w") as final:
-	json.dump(channelList, final)
-
+# Run loadFile function on target file
 df = loadFile(fileName)
 
+# Convert load and rev channels to numpy arrays
 load = df[loadChannel].to_numpy()
 revs = df[revChannel].to_numpy()
 
-
+# Convert negative torque to positive torque and remove NaN values from arrays
 torque_smoothed = abs(np.array(load))  
 rev_count = np.array(revs)       
 
 torque_smoothed = np.nan_to_num(torque_smoothed, nan=0.0)  # Replace NaN with 0
 rev_count = np.nan_to_num(rev_count, nan=0.0)             # Replace NaN with 0
 
+# Run EWM calculations on arrays using exponents
 results = fast_calculations.calculate(torque_smoothed, rev_count, exponents)
-print(results)
+
+# Convert "results" into JSON
+# File name is results.json
+with open("results.json", "w") as final:
+	json.dump(results, final)
