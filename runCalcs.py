@@ -3,6 +3,7 @@ import numpy as np
 import pandas
 import fast_calculations
 import json
+import sys
 
 # Load target dewesoft file and all data
 def loadFile(file):
@@ -16,8 +17,10 @@ def loadFile(file):
     except ValueError:
         pass
 
+inputJson = sys.argv[1]
+
 # Open testFile.json and load into variables
-with open('testFile.json', 'r') as file:
+with open(inputJson, 'r') as file:
     data = json.load(file)
     fileName = data["fileName"]
     exponents = data["exponents"]
@@ -45,3 +48,5 @@ results = fast_calculations.calculate(torque_smoothed, rev_count, exponents)
 # File name is results.json
 with open("results.json", "w") as final:
 	json.dump(results, final)
+     
+print(results)

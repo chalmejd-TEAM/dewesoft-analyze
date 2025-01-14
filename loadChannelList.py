@@ -1,5 +1,6 @@
 import dwdatareader as dw
 import json
+import sys
 
 # Load target dewesoft file channel list
 def loadChannelList(file):
@@ -12,8 +13,10 @@ def loadChannelList(file):
     except ValueError:
         pass
 
+inputJson = sys.argv[1]
+
 # Open testFile.json and load into variables
-with open('testFile.json', 'r') as file:
+with open(inputJson, 'r') as file:
     data = json.load(file)
     fileName = data["fileName"]
 
@@ -24,3 +27,5 @@ channelList = loadChannelList(fileName)
 # File name is channelList.json
 with open("channelList.json", "w") as final:
 	json.dump(channelList, final)
+     
+print(channelList)
