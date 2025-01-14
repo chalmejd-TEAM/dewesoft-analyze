@@ -20,16 +20,17 @@ with open('testFile.json', 'r') as file:
     data = json.load(file)
     fileName = data["fileName"]
     exponents = data["exponents"]
-    forward = data["forward"]
 
 df = loadFile(fileName)
+
+print(list(df))
 
 load = df['Combined Load'].to_numpy()
 revs = df['CNT 1/Raw_Count'].to_numpy()
 
 
 # Example usage
-torque_smoothed = np.array(load)  # Replace with your data
+torque_smoothed = abs(np.array(load))  # Replace with your data
 rev_count = np.array(revs)        # Replace with your data
 
 torque_smoothed = np.nan_to_num(torque_smoothed, nan=0.0)  # Replace NaN with 0
