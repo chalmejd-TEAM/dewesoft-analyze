@@ -19,11 +19,18 @@ const FileSelector = () => {
 
     const formData = new FormData();
     formData.append('file', file); // Attach the file to the FormData object
+    console.log(file["name"])
 
     // Send the file to the server
-    fetch('/api/upload-file', {
+    fetch('http://localhost:5000/run_python', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({
+        script: 'loadChannelList',  // Name of the Python script to run (without extension)
+        data: file["name"]
+    })
     })
       .then((response) => {
         if (!response.ok) {
