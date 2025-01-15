@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import PlotWindow from './PlotWindow'
+import FileExponentSelector from './FileSelector'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,16 +10,7 @@ function App() {
     <>
       <h1>Dewesoft Analyze</h1>
       <div className="card">
-        <h3>Select Analysis Type:</h3>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Exponentially Weighted Mean
-        </button>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Peak Finder
-        </button>
-      </div>
-      <div>
-        <PlotWindow className='PlotWindow'></PlotWindow>
+        <FileExponentSelector className='FXS'></FileExponentSelector>
       </div>
     </>
   )

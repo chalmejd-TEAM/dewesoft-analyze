@@ -26,5 +26,17 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "vite": "^6.0.7"
-  }
+  },
+  "description": "Used to load and peform basic analysis on Dewesoft Files",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chalmejd/DewesoftAnalyze.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chalmejd/DewesoftAnalyze/issues"
+  },
+  "homepage": "https://github.com/chalmejd/DewesoftAnalyze#readme"
 }
