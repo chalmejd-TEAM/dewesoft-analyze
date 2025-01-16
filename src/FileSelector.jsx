@@ -13,59 +13,30 @@ const FileSelector = () => {
   // Handles the file upload and sends it to the server
   const handleFileUpload = () => {
     if (!file) {
-      alert('Please select a file to upload.');
-      return;
+        alert("Please select a file to upload.");
+        return;
     }
 
     const formData = new FormData();
-    formData.append('file', file); // Attach the file to the FormData object
-    console.log(file["name"])
+    formData.append("file", file); // Attach the file
 
-    // Send the file to the server
-    fetch('http://localhost:5000/run_python', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-    },
-      body: JSON.stringify({
-        script: 'loadChannelList',  // Name of the Python script to run (without extension)
-        data: file["name"]
+    fetch("http://localhost:5000/run_python", {
+        method: "POST",
+        body: formData, // Send as multipart/form-data
     })
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to upload file to the server.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log('Server response:', data);
-
-        // Trigger Python script using the uploaded file
-        fetch('/api/run-script', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ script: 'loadChannelList.py', args: [data.filePath] }),
-        })
-          .then((response) => {
+        .then((response) => {
             if (!response.ok) {
-              throw new Error('Failed to execute Python script.');
+                throw new Error("Failed to upload file to the server.");
             }
             return response.json();
-          })
-          .then((scriptResponse) => {
-            console.log('Python script response:', scriptResponse);
-          })
-          .catch((error) => {
-            console.error('Error executing Python script:', error);
-          });
-      })
-      .catch((error) => {
-        console.error('Error uploading file to server:', error);
-      });
-  };
+        })
+        .then((data) => {
+            console.log("Server response:", data);
+        })
+        .catch((error) => {
+            console.error("Error uploading file to server:", error);
+        });
+};
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
