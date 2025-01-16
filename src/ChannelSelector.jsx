@@ -27,12 +27,40 @@ const ChannelSelector = ({ channelNames }) => {
   const handleSubmit = () => {
     console.log("Selected Channels:", selectedChannels);
     console.log("Exponents:", exponents);
-    alert(
-      `Selected Channels: ${JSON.stringify(selectedChannels)}\nExponents: ${exponents.join(
-        ", "
-      )}`
-    );
+  
+    // Form data to send to the server
+    const formData = new FormData();
+    
+    // Add the file again (assuming file is accessible in App component's state)
+    const fileInput = document.getElementById("fileInput");
+    const file = fileInput.files[0]; // Get the selected file
+    if (file) {
+      formData.append("file", file);
+    }
+  
+    // Add other data (selected channels and exponents)
+    formData.append("loadChannel", selectedChannels.channel1);
+    formData.append("revChannel", selectedChannels.channel2);
+    formData.append("exponents", JSON.stringify(exponents));
+  
+    // Send data to the server for processing
+    fetch("http://localhost:5000/run_calcs", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert("Calculation Results: " + JSON.stringify(data.results));
+        } else {
+          alert("Error: " + data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+  
 
   return (
     <div>
