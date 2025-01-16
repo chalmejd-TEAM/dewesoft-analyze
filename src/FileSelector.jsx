@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FileSelector = () => {
+const FileSelector = ({ onUploadComplete }) => {
   // State to store the selected file
   const [file, setFile] = useState(null);
 
@@ -31,7 +31,16 @@ const FileSelector = () => {
             return response.json();
         })
         .then((data) => {
-            console.log("Server response:", data);
+          console.log("Server response:", data);
+  
+          // Extract the channel names from the output
+          const rawOutput = data.result?.output;
+          if (rawOutput) {
+            const channelNames = JSON.parse(rawOutput); // Parse the JSON string
+            onUploadComplete({ channels: channelNames }); // Pass the channels to the parent component
+          } else {
+            alert("No valid output found in the server response.");
+          }
         })
         .catch((error) => {
             console.error("Error uploading file to server:", error);
