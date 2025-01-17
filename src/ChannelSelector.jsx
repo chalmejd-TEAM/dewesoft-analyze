@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LoadingBars from "./LoadingBars";
 
 const ChannelSelector = ({ channelNames }) => {
   const [selectedChannels, setSelectedChannels] = useState({
@@ -7,6 +8,7 @@ const ChannelSelector = ({ channelNames }) => {
   });
   const [exponents, setExponents] = useState([]);
   const [results, setResults] = useState(null); // State for results
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChannelChange = (key, value) => {
     setSelectedChannels((prev) => ({
@@ -25,8 +27,10 @@ const ChannelSelector = ({ channelNames }) => {
   };
 
   const handleSubmit = () => {
+    setIsLoading(true);
     console.log("Selected Channels:", selectedChannels);
     console.log("Exponents:", exponents);
+    console.log("Loading State: ", isLoading);
   
     const formData = new FormData();
     const fileInput = document.getElementById("fileInput");
@@ -55,6 +59,9 @@ const ChannelSelector = ({ channelNames }) => {
       })
       .catch((error) => {
         console.error("Error:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -64,7 +71,7 @@ const ChannelSelector = ({ channelNames }) => {
 
       <div style={{ marginBottom: "10px" }}>
         <label htmlFor="channel1" style={{ marginRight: "10px" }}>
-          Select Channel 1:
+          Select Load Channel:
         </label>
         <select
           id="channel1"
@@ -83,7 +90,7 @@ const ChannelSelector = ({ channelNames }) => {
 
       <div style={{ marginBottom: "10px" }}>
         <label htmlFor="channel2" style={{ marginRight: "10px" }}>
-          Select Channel 2:
+          Select Counter Channel:
         </label>
         <select
           id="channel2"
@@ -123,6 +130,7 @@ const ChannelSelector = ({ channelNames }) => {
       >
         Submit
       </button>
+      {isLoading && <LoadingBars />} {/* Show LoadingBar when loading */}
 
       {results && (
         <div style={{ marginTop: "20px" }}>
