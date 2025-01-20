@@ -140,13 +140,15 @@ const ChannelSelector = ({ channelNames }) => {
               <tr>
                 <th>Exponent</th>
                 <th>Result</th>
+                <th>Cycle Count</th>
               </tr>
             </thead>
             <tbody>
-              {results.map(([exponent, result], index) => (
+              {results.map(([exponent, result, revCount], index) => (
                 <tr key={index}>
                   <td>{exponent}</td>
                   <td>{result}</td>
+                  <td>{revCount}</td>
                 </tr>
               ))}
             </tbody>
