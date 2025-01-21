@@ -3,15 +3,15 @@ import './AppHeader.css';
 
 const AppHeader = () => {
   return (
-    <header style={headerStyle}>
-      <h1 className='gradient-text'>Dewesoft Analyze</h1>
-    </header>
+      <header style={headerStyle}>
+        <h1 className='gradient-text'>Dewesoft Analyze</h1>
+      </header>
   );
 };
 
 // Inline styles
 const headerStyle = {
-  position: 'absolute',    // Keeps the header fixed at the top
+  // position: 'absolute',    // Keeps the header fixed at the top
   top: 0,               // Aligns it to the top of the screen
   left: 0,              // Aligns it to the left edge of the screen
   width: '100%',        // Makes the header full width

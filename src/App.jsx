@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { MathJaxContext, MathJax } from 'better-react-mathjax';
 import './App.css'
 import FileSelector from './FileSelector'
 import ChannelSelector from './ChannelSelector';
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
+import Formula from './Formula';
 
 function App() {
   const [channelNames, setChannelNames] = useState([]);
@@ -20,6 +22,7 @@ function App() {
   return (
     <>
       <AppHeader />
+      <Formula />
       <div className="card">
         <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
       </div>

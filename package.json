@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "better-react-mathjax": "^2.0.4-beta1",
+    "mathjax": "^3.2.2",
     "plotly.js": "^2.35.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
