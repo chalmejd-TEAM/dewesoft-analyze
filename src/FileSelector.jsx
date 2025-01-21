@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import LoadingBars from './LoadingBars';
 
 const FileSelector = ({ onUploadComplete }) => {
   // State to store the selected file
   const [file, setFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Handles changes to the file input
   const handleFileChange = (event) => {
@@ -19,6 +21,8 @@ const FileSelector = ({ onUploadComplete }) => {
 
     const formData = new FormData();
     formData.append("file", file); // Attach the file
+
+    setIsLoading(true);
 
     fetch("http://localhost:5000/run_python", {
         method: "POST",
@@ -44,6 +48,9 @@ const FileSelector = ({ onUploadComplete }) => {
         })
         .catch((error) => {
             console.error("Error uploading file to server:", error);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
 };
 
@@ -69,6 +76,8 @@ const FileSelector = ({ onUploadComplete }) => {
       >
         Use Selected File
       </button>
+      {/*Show Loading bars when uploading*/}
+      {isLoading && < LoadingBars />}
     </div>
   );
 };
