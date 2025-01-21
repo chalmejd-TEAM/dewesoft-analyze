@@ -1,0 +1,11 @@
+.gradient-text {
+    font-size: 3rem; 
+    margin: 0; 
+    font-weight: bold;
+    background: linear-gradient(90deg,  #CD4A00, #999999); 
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    line-height: 1.5;
+  }
+  
