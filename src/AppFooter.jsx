@@ -16,9 +16,10 @@ const AppFooter = () => {
 const footerStyle = {
   position: 'absolute',
   bottom: 0,
-  width: '100%',
-  textAlign: 'center',
-  padding: '10px',
+  left: 0,
+  width: '98%',
+  textAlign: 'right',
+  padding: '10px 5px',
   backgroundColor: 'transparent', // Transparent background
 };
 

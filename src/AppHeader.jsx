@@ -10,11 +10,11 @@ const AppHeader = () => {
 
 // Inline styles
 const headerStyle = {
-  position: 'fixed',    // Keeps the header fixed at the top
+  position: 'absolute',    // Keeps the header fixed at the top
   top: 0,               // Aligns it to the top of the screen
   left: 0,              // Aligns it to the left edge of the screen
   width: '100%',        // Makes the header full width
-  padding: '20px',
+  padding: '20px 0',
   textAlign: 'center',
   color: '#dddddd',            // White text
   zIndex: 1000,             // Ensures the header stays on top of other content
