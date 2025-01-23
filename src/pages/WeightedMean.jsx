@@ -18,15 +18,11 @@ function WeightedMean() {
     };
     return (
         <>
-            <Formula />
             <div className="card">
             <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
             </div>
             <div className='card'>
             {channelNames.length > 0 && <ChannelSelector channelNames={channelNames} />}
-            </div>
-            <div>
-            <Footer />
             </div>
         </>
     )}
