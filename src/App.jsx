@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { MathJaxContext, MathJax } from 'better-react-mathjax';
 import './App.css'
-import FileSelector from './FileSelector'
-import ChannelSelector from './ChannelSelector';
-import AppFooter from './AppFooter';
-import AppHeader from './AppHeader';
-import Formula from './Formula';
+import FileSelector from './components/FileSelector/FileSelector';
+import ChannelSelector from './components/WeightedMean/ChannelSelector';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Formula from './components/WeightedMean/Formula';
 
 function App() {
   const [channelNames, setChannelNames] = useState([]);
@@ -21,7 +20,7 @@ function App() {
 
   return (
     <>
-      <AppHeader />
+      <Header />
       <Formula />
       <div className="card">
         <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
@@ -30,7 +29,7 @@ function App() {
         {channelNames.length > 0 && <ChannelSelector channelNames={channelNames} />}
       </div>
       <div>
-        <AppFooter />
+        <Footer />
       </div>
     </>
   )

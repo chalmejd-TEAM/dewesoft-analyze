@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppFooter = () => {
+const Footer = () => {
   return (
     <footer style={footerStyle}>
       <p style={textStyle}>
@@ -29,4 +29,4 @@ const textStyle = {
   margin: 0,
 };
 
-export default AppFooter;
+export default Footer;

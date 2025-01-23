@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LoadingBars from './LoadingBars';
+import LoadingBars from '../LoadingBars/LoadingBars';
 
 const FileSelector = ({ onUploadComplete }) => {
   // State to store the selected file

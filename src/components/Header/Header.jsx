@@ -1,7 +1,7 @@
 import React from 'react';
-import './AppHeader.css';
+import './Header.css';
 
-const AppHeader = () => {
+const Header = () => {
   return (
       <header style={headerStyle}>
         <h1 className='gradient-text'>Dewesoft Analyze</h1>
@@ -21,4 +21,4 @@ const headerStyle = {
   zIndex: 1000,             // Ensures the header stays on top of other content
 };
 
-export default AppHeader;
+export default Header;

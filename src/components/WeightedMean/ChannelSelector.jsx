@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoadingBars from "./LoadingBars";
+import LoadingBars from "../LoadingBars/LoadingBars";
 
 const ChannelSelector = ({ channelNames }) => {
   const [selectedChannels, setSelectedChannels] = useState({
