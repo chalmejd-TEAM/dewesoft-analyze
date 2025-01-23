@@ -4,7 +4,7 @@ import Formula from "../components/WeightedMean/Formula";
 function Overview() {
   return (
     <>
-    <h1>Overview</h1>
+    <h1 style={{fontSize: 40}}>Overview</h1>
     <h2>Weighted Mean</h2>
     <hr></hr>
     
