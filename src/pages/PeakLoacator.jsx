@@ -1,13 +1,26 @@
 import React from "react";
+import { useState } from 'react';
+import FileSelector from "../components/FileSelector/FileSelector";
 
 function PeakLocator() {
-  return (
-    <div style={{fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{fontSize: 40}}>Peak Locator</h1>
-      <hr></hr>
-      <h2>Coming Soon...</h2>
-    </div>
-  );
-}
+    const [channelNames, setChannelNames] = useState([]);
+
+    const handleFileUploadResponse = (response) => {
+      console.log("File upload response:", response);
+      if (response.channels) {
+        setChannelNames(response.channels);
+      } else {
+        alert("No channel names found in the response.");
+      }
+    };
+    return (
+        <>
+            <h1 style={{fontSize: 40}}>Peak Locator</h1>
+            <hr></hr>
+            <div className="card">
+            <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
+            </div>
+        </>
+    )}
 
 export default PeakLocator;

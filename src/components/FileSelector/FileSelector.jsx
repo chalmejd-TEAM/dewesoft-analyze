@@ -56,8 +56,6 @@ const FileSelector = ({ onUploadComplete }) => {
 
   return (
     <div style={{fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{fontSize: 40}}>Weighted Mean</h1>
-      <hr></hr>
       <h2>File Selection</h2>
 
       {/* File input section */}

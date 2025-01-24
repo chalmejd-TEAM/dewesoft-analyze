@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from 'react'
-import Formula from "../components/WeightedMean/Formula";
 import FileSelector from "../components/FileSelector/FileSelector";
 import ChannelSelector from "../components/WeightedMean/ChannelSelector";
-import Footer from "../components/Footer/Footer";
+
 
 function WeightedMean() {
     const [channelNames, setChannelNames] = useState([]);
@@ -18,6 +17,8 @@ function WeightedMean() {
     };
     return (
         <>
+            <h1 style={{fontSize: 40}}>Weighted Mean</h1>
+            <hr></hr>
             <div className="card">
             <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
             </div>
