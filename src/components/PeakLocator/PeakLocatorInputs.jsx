@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 const PeakLocatorInputs = () => {
   const [numExtrema, setNumExtrema] = useState(1);
-  const [prominence, setProminence] = useState(5000);
+  const [prominence, setProminence] = useState(2500);
   const [threshold, setThreshold] = useState(5000);
-  const [rmsValue, setRmsValue] = useState(5000);
+  const [rmsValue, setRmsValue] = useState(2500);
   const [loadChannel, setLoadChannel] = useState("");
   const [cycleChannel, setCycleChannel] = useState("");
 
@@ -29,7 +29,8 @@ const PeakLocatorInputs = () => {
                 <input
                 type="range"
                 min="0"
-                max="10000"
+                max="5000"
+                step="10"
                 value={prominence}
                 onChange={(e) => setProminence(Number(e.target.value))}
                 style={{ width: '100%' }}
@@ -42,6 +43,7 @@ const PeakLocatorInputs = () => {
                 type="range"
                 min="0"
                 max="10000"
+                step="10"
                 value={threshold}
                 onChange={(e) => setThreshold(Number(e.target.value))}
                 style={{ width: '100%' }}
@@ -53,7 +55,8 @@ const PeakLocatorInputs = () => {
                 <input
                 type="range"
                 min="0"
-                max="10000"
+                max="5000"
+                step="10"
                 value={rmsValue}
                 onChange={(e) => setRmsValue(Number(e.target.value))}
                 style={{ width: '100%' }}
