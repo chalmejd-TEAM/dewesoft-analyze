@@ -22,7 +22,7 @@ function PeakLocator() {
             <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
             </div>
             <div>
-              <PeakLocatorInputs />
+              <PeakLocatorInputs channelNames={channelNames}/>
             </div>
         </>
     )}
