@@ -23,7 +23,7 @@ function WeightedMean() {
             <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
             </div>
             <div className='card'>
-            {channelNames.length > 0 && <ChannelSelector channelNames={channelNames} />}
+            <ChannelSelector channelNames={channelNames} />
             </div>
         </>
     )}

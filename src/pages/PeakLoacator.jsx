@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import FileSelector from "../components/FileSelector/FileSelector";
+import PeakLocatorInputs from "../components/PeakLocator/PeakLocatorInputs";
 
 function PeakLocator() {
     const [channelNames, setChannelNames] = useState([]);
@@ -19,6 +20,9 @@ function PeakLocator() {
             <hr></hr>
             <div className="card">
             <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
+            </div>
+            <div>
+              <PeakLocatorInputs />
             </div>
         </>
     )}
