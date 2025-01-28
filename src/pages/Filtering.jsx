@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 import FileSelector from "../components/FileSelector/FileSelector";
-import PeakLocatorInputs from "../components/PeakLocator/PeakLocatorInputs";
 
-function PeakLocator() {
+function Filtering() {
     const [channelNames, setChannelNames] = useState([]);
 
     const handleFileUploadResponse = (response) => {
@@ -16,16 +15,10 @@ function PeakLocator() {
     };
     return (
         <>
-            <h1 style={{fontSize: 40}}>Peak Locator</h1>
+            <h1 style={{fontSize: 40}}>Filtering</h1>
             <hr></hr>
-            <div className="card">
-            <FileSelector className='File Selector' onUploadComplete={handleFileUploadResponse}></FileSelector>
-            </div>
-            <div>
-              <PeakLocatorInputs channelNames={channelNames}/>
-            </div>
-            <h2>In Process...</h2>
+            <h2>In process...</h2>
         </>
     )}
 
-export default PeakLocator;
+export default Filtering;

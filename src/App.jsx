@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-do
 import Overview from "./pages/Overview";
 import WeightedMean from "./pages/WeightedMean";
 import PeakLocator from "./pages/PeakLoacator";
+import Filtering from "./pages/Filtering";
+import CurveFitting from "./pages/CurveFitting";
 import Footer from "./components/Footer/Footer";
 import './components/Header/Header.css'
 
@@ -59,6 +61,28 @@ function App() {
                 Peak Locator
               </NavLink>
             </li>
+            <li style={{ marginBottom: "10px" }}>
+              <NavLink
+                to="/filtering"
+                style={({ isActive }) => ({
+                  color: isActive ? "#CD4A00" : "white",
+                  textDecoration: isActive ? "underline" : "none",
+                })}
+              >
+                Filtering
+              </NavLink>
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              <NavLink
+                to="/curve-fitting"
+                style={({ isActive }) => ({
+                  color: isActive ? "#CD4A00" : "white",
+                  textDecoration: isActive ? "underline" : "none",
+                })}
+              >
+                Curve Fitting
+              </NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -76,6 +100,8 @@ function App() {
             <Route path="/" element={<Overview />} />
             <Route path="/weighted-mean" element={<WeightedMean />} />
             <Route path="/peak-locator" element={<PeakLocator />} />
+            <Route path="/filtering" element={<Filtering />}/>
+            <Route path="/curve-fitting" element={<CurveFitting/>}/>
           </Routes>
         </div>
       </div>
