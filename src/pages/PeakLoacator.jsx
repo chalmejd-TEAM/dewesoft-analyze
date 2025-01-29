@@ -32,11 +32,12 @@ function PeakLocator() {
         <PeakLocatorInputs channelNames={channelNames} onResultsReceived={handleResultsReceived} />
       </div>
       <div>
-        {plotData && <PeakPlot data={plotData} />}  {/* Pass plot data to the PeakPlot component */}
+        {console.log("Plot Data before rendering PeakPlot:", plotData)}  {/* Log before rendering */}
+        {plotData ? <PeakPlot data={plotData} /> : <p>Waiting for data...</p>}
       </div>
       <h2>In Process...</h2>
     </>
-  );
+  );  
 }
 
 export default PeakLocator;
